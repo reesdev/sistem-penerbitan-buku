@@ -64,4 +64,13 @@ class AuthController extends Controller
             'token_type' => 'Bearer',
         ]);
     }
+        public function logout(Request $request)
+    {
+        // Menghancurkan token sesi yang sedang dipakai saat ini
+        $request->user()->currentAccessToken()->delete();
+
+        return response()->json([
+            'message' => 'Berhasil logout'
+        ]);
+    }
 }
